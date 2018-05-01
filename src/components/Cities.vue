@@ -41,29 +41,27 @@ export default {
         .then(response => {
           if (response.status === 200) {
             let cities = response.data
-
             this.$statesService.listAll()
               .then(response => {
                 this.states = response.data
-                
                 this.$regionsService.listAll()
                   .then(response => {
                     this.regions = response.data
+                    for (let idxState in this.states) {
+                      for (let idxRegion in this.regions) {
+                        if (this.states[idxState].id_region === this.regions[idxRegion].id) {
+                          this.states[idxState].region = this.regions[idxRegion].name
+                        }
+                      }
+                    }
+                    for (let idxCitie in cities) {
                       for (let idxState in this.states) {
-                        for (let idxRegion in this.regions) {
-                          if (this.states[idxState].id_region === this.regions[idxRegion].id) {
-                            this.states[idxState].region = this.regions[idxRegion].name
-                          }
+                        if (cities[idxCitie].id_state === this.states[idxState].id) {
+                          cities[idxCitie].state = this.states[idxState].name
+                          cities[idxCitie].region = this.states[idxState].region
                         }
                       }
-                      for (let idxCitie in cities) {
-                        for (let idxState in this.states) {
-                          if (cities[idxCitie].id_state === this.states[idxState].id) {
-                            cities[idxCitie].state = this.states[idxState].name
-                            cities[idxCitie].region = this.states[idxState].region
-                          }
-                        }
-                      }
+                    }
                     this.cities = cities
                   }).catch(error => {
                     console.log('error in load regions. ' + error.response)
