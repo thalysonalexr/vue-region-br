@@ -1,27 +1,27 @@
 <template>
-  <section id="cities" class="container">
-    <h1 class="title">
-      {{ msg }}
-    </h1>
-    <table class="table table-striped table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>Código</th>
-          <th>Descrição</th>
-          <th>Estado</th>
-          <th>Região</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="citie in cities" :key="citie.index">
-          <td>{{ citie.id }}</td>
-          <td>{{ citie.name }}</td>
-          <td>{{ citie.state }}</td>
-          <td>{{ citie.region }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+<section id="cities" class="container">
+  <h1 class="title">
+    {{ msg }}
+  </h1>
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Código</th>
+        <th>Descrição</th>
+        <th>Estado</th>
+        <th>Região</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="citie in cities" :key="citie.index">
+        <td>{{ citie.id }}</td>
+        <td>{{ citie.name }}</td>
+        <td>{{ citie.state }}</td>
+        <td>{{ citie.region }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 </template>
 
 <script>
@@ -51,6 +51,7 @@ export default {
                       for (let idxRegion in this.regions) {
                         if (this.states[idxState].id_region === this.regions[idxRegion].id) {
                           this.states[idxState].region = this.regions[idxRegion].name
+                          break
                         }
                       }
                     }
@@ -59,6 +60,7 @@ export default {
                         if (cities[idxCitie].id_state === this.states[idxState].id) {
                           cities[idxCitie].state = this.states[idxState].name
                           cities[idxCitie].region = this.states[idxState].region
+                          break
                         }
                       }
                     }

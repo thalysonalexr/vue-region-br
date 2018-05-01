@@ -1,25 +1,25 @@
 <template>
-  <section id="regions" class="container">
-    <h1 class="title">
-      {{ msg }}
-    </h1>
-    <table class="table table-striped table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>Código</th>
-          <th>Sigla</th>
-          <th>Descrição</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="region in regions" :key="region.index">
-          <td>{{ region.id }}</td>
-          <td>{{ region.initials }}</td>
-          <td>{{ region.name }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+<section id="regions" class="container">
+  <h1 class="title">
+    {{ msg }}
+  </h1>
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Código</th>
+        <th>Sigla</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="region in regions" :key="region.index">
+        <td>{{ region.id }}</td>
+        <td>{{ region.initials }}</td>
+        <td>{{ region.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 </template>
 
 <script>

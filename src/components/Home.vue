@@ -1,44 +1,44 @@
 <template>
-  <section id="home" class="container">
-    <h1 class="display-3">
-      {{ title }}
-    </h1>
-    <div id="errors" v-if="errors.length">
-      <span><strong>Erro na aplicação :(</strong></span>
-      <ul v-for="error in errors" :key="error.index">
-        <li class="alert alert-danger">{{ error }}</li>
-      </ul>
+<section id="home" class="container">
+  <h1 class="display-3">
+    {{ title }}
+  </h1>
+  <div id="errors" v-if="errors.length">
+    <span><strong>Erro na aplicação :(</strong></span>
+    <ul v-for="error in errors" :key="error.index">
+      <li class="alert alert-danger">{{ error }}</li>
+    </ul>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="region">Região</label>
+      <select v-model="regionSelected" @change="selectStateAndCity" id="region" class="form-control">
+        <option disabled value="">Escolha a região</option>
+        <option v-for="region in regions" :key="region.index" :value="region.id">
+          {{ region.name }}
+        </option>
+      </select>
     </div>
-    <form>
-      <div class="form-group">
-        <label for="region">Região</label>
-        <select v-model="regionSelected" @change="selectStateAndCity" id="region" class="form-control">
-          <option disabled value="">Escolha a região</option>
-          <option v-for="region in regions" :key="region.index" :value="region.id">
-            {{ region.name }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="state">Estado</label>
-        <select v-model="stateSelected" @change="selectCity" id="state" class="form-control" disabled>
-          <option disabled value="">Escolha o estado</option>
-          <option v-for="state in states" :key="state.index" :value="state.id">
-            {{ state.name }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="citie">Cidade</label>
-        <select v-model="citieSelected" id="citie" class="form-control" disabled>
-          <option disabled value="">Escolha a cidade</option>
-          <option v-for="citie in cities" :key="citie.index" :value="citie.id">
-            {{ citie.name }}
-          </option>
-        </select>
-      </div>
-    </form>
-  </section>
+    <div class="form-group">
+      <label for="state">Estado</label>
+      <select v-model="stateSelected" @change="selectCity" id="state" class="form-control" disabled>
+        <option disabled value="">Escolha o estado</option>
+        <option v-for="state in states" :key="state.index" :value="state.id">
+          {{ state.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="citie">Cidade</label>
+      <select v-model="citieSelected" id="citie" class="form-control" disabled>
+        <option disabled value="">Escolha a cidade</option>
+        <option v-for="citie in cities" :key="citie.index" :value="citie.id">
+          {{ citie.name }}
+        </option>
+      </select>
+    </div>
+  </form>
+</section>
 </template>
 
 <script>
